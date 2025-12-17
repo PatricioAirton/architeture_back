@@ -7,6 +7,7 @@ from sqlalchemy.exc import IntegrityError
 from models import Session, Passageiro, Contato
 from logger import logger
 from schemas import *
+from datetime import datetime
 from flask_cors import CORS
 
 info = Info(title="Minha API", version="1.0.0")
@@ -35,10 +36,12 @@ def add_passageiro(body:PassageiroSchema):
     """
 
     data= request.get_json();    
+    input_date = data.get("birthdate");
+    dt = datetime.strptime(input_date, "%Y-%m-%dT%H:%M:%S");
     passageiro = Passageiro(
         nome=data.get("nome"),
         cpf=data.get("cpf"),
-        birthdate=data.get("birthdate"),
+        birthdate=dt,
         flight=data.get("flight")
     )
 
@@ -46,23 +49,23 @@ def add_passageiro(body:PassageiroSchema):
     try:
         # criando conexão com a base
         session = Session()
-        # adicionando passageiro
+        # adicionando produto
         session.add(passageiro)
         # efetivando o camando de adição de novo item na tabela
         session.commit()
-        logger.debug(f"Adicionado passageiro de nome,cpf e data de nascimento: '{passageiro.nome}', '{passageiro.cpf}','{passageiro.birthdate}'")
+        logger.debug(f"Adicionado passageiro de nome e cpf: '{passageiro.nome}', '{passageiro.cpf}'")
         return apresenta_passageiro(passageiro), 200
 
     except IntegrityError as e:
         # como a duplicidade de cpf é a provável razão do IntegrityError
         error_msg = "Passageiro de mesmo cpf já salvo na base :/"
-        logger.warning(f"Erro ao adicionar passageiro:'{passageiro.nome}', '{passageiro.cpf}', '{passageiro.birthdate}', {error_msg}")
+        logger.warning(f"Erro ao adicionar passageiro:'{passageiro.nome}', '{passageiro.cpf}', {error_msg}")
         return {"message": error_msg}, 409
 
     except Exception as e:
         # caso um erro fora do previsto
         error_msg = "Não foi possível salvar novo item :/"
-        logger.warning(f"Erro ao adicionar passageiro '{passageiro.nome}', '{passageiro.cpf}', '{passageiro.birthdate}', {error_msg}")
+        logger.warning(f"Erro ao adicionar passageiro '{passageiro.nome}', '{passageiro.cpf}', {error_msg}")
         return {"message": error_msg}, 400
 
 
@@ -92,7 +95,7 @@ def get_passageiros():
 @app.get('/passageiro', tags=[passageiro_tag],
          responses={"200": PassageiroViewSchema, "404": ErrorSchema})
 def get_passageiro(query: PassageiroBuscaSchema):
-    """Faz a busca por um Passageiro a partir do cpf do passageiro
+    """Faz a busca por um Passageiro a partir do CPF do passageiro
 
     Retorna uma representação dos passageiros e contatos associados.
     """
@@ -121,18 +124,20 @@ def update_passageiro(body:PassageiroUpdateSchema):
     Retorna uma mensagem de confirmação da atualização.
     """
     data= request.get_json();
+    input_date = data.get("birthdate");
+    dt = datetime.strptime(input_date, "%Y-%m-%dT%H:%M:%S");
     
     passageiro_id  = data.get("id")
     passageiro_nome  = data.get("nome")
     passageiro_cpf  = data.get("cpf")
-    passageiro_birthdate = data.get("birthadate")
+    passageiro_birthdate = dt
     passageiro_flight  = data.get("flight")
     
     logger.debug(f"Atualizando passageiro de cpf: '{passageiro_cpf}'")
     # criando conexão com a base
     session = Session()
     # fazendo a atualizacao
-    count = session.query(Passageiro).filter(Passageiro.id == passageiro_id).update({'nome': passageiro_nome, 'cpf': passageiro_cpf, 'birthdate': passageiro_birthdate,'flight': passageiro_flight})
+    count = session.query(Passageiro).filter(Passageiro.id == passageiro_id).update({'nome': passageiro_nome, 'cpf': passageiro_cpf, 'flight': passageiro_flight})
     session.commit()
     # fazendo a busca
     passageiro = session.query(Passageiro).filter(Passageiro.id == passageiro_id).first()

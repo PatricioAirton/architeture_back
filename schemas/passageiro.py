@@ -1,9 +1,7 @@
-from pydantic import BaseModel
+ffrom pydantic import BaseModel
 from typing import Optional, List
-from sqlalchemy import Column, String, Integer, DateTime, Float, UniqueConstraint
 from models.passageiro import Passageiro
 from datetime import datetime
-from typing import Union
 
 from schemas import ContatoSchema
 
@@ -13,7 +11,7 @@ class PassageiroSchema(BaseModel):
     """
     nome: str = "Joao da Silva"
     cpf: str = "433.345.437-26"
-    birthdate:str= "(2020,11,8)"
+    birthdate: datetime = datetime(1974, 10, 5, 0, 0, 0, 0)
     flight: str = "TAM-1234"
 
 
@@ -23,7 +21,7 @@ class PassageiroUpdateSchema(BaseModel):
     id: int = 1
     nome: str = "Joao da Silva"
     cpf: str = "433.345.437-26"
-    birthdate: str = "(2020,11,8)"
+    birthdate: datetime = datetime(1974, 10, 5, 0, 0, 0, 0)
     flight: str = "TAM-1234"
 
 class PassageiroBuscaSchema(BaseModel):
@@ -62,7 +60,7 @@ class PassageiroViewSchema(BaseModel):
     id: int = 1
     nome: str = "Joao da Silva"
     cpf: str = "433.345.437-26"
-    birthdate: str = "(2020,11,8)"
+    birthdate: datetime = datetime(1974, 10, 5, 0, 0, 0, 0)
     flight: str = "TAM-1234"
     total_contatos: int = 1
     contatos:List[ContatoSchema]

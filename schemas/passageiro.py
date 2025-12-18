@@ -1,4 +1,4 @@
-ffrom pydantic import BaseModel
+from pydantic import BaseModel
 from typing import Optional, List
 from models.passageiro import Passageiro
 from datetime import datetime

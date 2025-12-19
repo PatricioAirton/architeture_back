@@ -5,15 +5,15 @@ import os
 
 # importando os elementos definidos no modelo
 from models.base import Base
-from models.contatos import Contato
+from models.contato import Contato
 from models.passageiro import Passageiro
-
 
 db_path = "database/"
 # Verifica se o diretorio não existe
 if not os.path.exists(db_path):
    # então cria o diretorio
    os.makedirs(db_path)
+
 # url de acesso ao banco (essa é uma url de acesso ao sqlite local)
 db_url = 'sqlite:///%s/db.sqlite3' % db_path
 

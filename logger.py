@@ -15,10 +15,10 @@ dictConfig({
     "disable_existing_loggers": True,
     "formatters": {
         "default": {
-            "format": "[%(asctime)s] %(levelname)-4s %(funcName)s() L%(lineno)-4d %(message)s",
+            "format": "[%(asctime)s] %(levelname)-4s %(message)s",
         },
         "detailed": {
-            "format": "[%(asctime)s] %(levelname)-4s %(funcName)s() L%(lineno)-4d %(message)s - call_trace=%(pathname)s L%(lineno)-4d",
+            "format": "[%(asctime)s] %(levelname)-4s %(message)s - call_trace=%(pathname)s L%(lineno)-4d",
         }
     },
     "handlers": {

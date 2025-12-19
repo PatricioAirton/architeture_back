@@ -1,4 +1,4 @@
-# Minha API em REST
+ Minha API em REST
 
 Este pequeno projeto faz parte do material diático da Disciplina **Desenvolvimento Full Stack Avançado** 
 
@@ -32,20 +32,20 @@ Este comando instala as dependências/bibliotecas, descritas no arquivo `require
 Para executar a API  basta executar:
 
 ```
-(env)$ flask run --host 0.0.0.0 --port 5000
+(env)$ flask run --host 0.0.0.0 --port 5001
 ```
 
 Em modo de desenvolvimento é recomendado executar utilizando o parâmetro reload, que reiniciará o servidor
 automaticamente após uma mudança no código fonte. 
-
+#
 ```
-(env)$ flask run --host 0.0.0.0 --port 5000 --reload
+(env)$ flask run --host 0.0.0.0 --port 5001 --reload
 ```
 
 ---
 ### Acesso no browser
 
-Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.
+Abra o [http://localhost:5000/#/](http://localhost:5001/#/) no navegador para verificar o status da API em execução.
 
 ---
 ## Como executar através do Docker
@@ -65,7 +65,7 @@ Uma vez criada a imagem, para executar o container basta executar, **como admini
 $ docker run -p 5000:5000 rest-api
 ```
 
-Uma vez executando, para acessar a API, basta abrir o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador.
+Uma vez executando, para acessar a API, basta abrir o [http://localhost:5001/#/](http://localhost:5001/#/) no navegador.
 
 
 
@@ -83,20 +83,20 @@ Uma vez executando, para acessar a API, basta abrir o [http://localhost:5000/#/]
 >```
 >Subistituindo o `IMAGE ID` pelo código da imagem
 >
->**Para verificar se o container está em exceução** você pode executar o seguinte comando:
+>**Para verificar se o container está em execução** você pode executar o seguinte comando:
 >
 >```
 >$ docker container ls --all
 >```
 >
-> Caso queira **parar um conatiner**, basta executar o comando:
+> Caso queira **parar um container**, basta executar o comando:
 >```
 >$ docker stop <CONTAINER ID>
 >```
 >Subistituindo o `CONTAINER ID` pelo ID do conatiner
 >
 >
-> Caso queira **destruir um conatiner**, basta executar o comando:
+> Caso queira **destruir um container**, basta executar o comando:
 >```
 >$ docker rm <CONTAINER ID>
 >```

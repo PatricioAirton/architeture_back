@@ -1,6 +1,11 @@
- Minha API em REST
+ # Aplicação backend com chamda pra uma API Externa
 
-Este pequeno projeto faz parte do material diático da Disciplina **Desenvolvimento Full Stack Avançado** 
+Este projeto faz parte do MVP que incrementa o trabalho apresentado na Sprint Desenvolvimento full stack que suporta uma aplicação web para o gerenciamento de passageiros de um voo de eVTOL.
+
+Para efeitos desse MVP, optou-se pelo cenário 1.1 com uma chamada de uma api externa a partir do backend.
+
+A api externa selecionada verifica e valida a situação de um CPF junto à Receita Federal o que torna possível a correta identificação do passageiro e sua inclusão na lista de passageiros.
+
 
 O objetivo aqui é apresetar uma API emplementada seguindo o estilo REST.
 
@@ -32,20 +37,20 @@ Este comando instala as dependências/bibliotecas, descritas no arquivo `require
 Para executar a API  basta executar:
 
 ```
-(env)$ flask run --host 0.0.0.0 --port 5001
+(env)$ flask run --host 0.0.0.0 --port 5002
 ```
 
 Em modo de desenvolvimento é recomendado executar utilizando o parâmetro reload, que reiniciará o servidor
 automaticamente após uma mudança no código fonte. 
 #
 ```
-(env)$ flask run --host 0.0.0.0 --port 5001 --reload
+(env)$ flask run --host 0.0.0.0 --port 5002 --reload
 ```
 
 ---
 ### Acesso no browser
 
-Abra o [http://localhost:5000/#/](http://localhost:5001/#/) no navegador para verificar o status da API em execução.
+Abra o [http://localhost:5002/#/](http://localhost:5002/#/) no navegador para verificar o status da API em execução.
 
 ---
 ## Como executar através do Docker
@@ -62,10 +67,10 @@ $ docker build -t rest-api .
 Uma vez criada a imagem, para executar o container basta executar, **como administrador**, seguinte o comando:
 
 ```
-$ docker run -p 5000:5000 rest-api
+$ docker run -p 5002:5002 rest-api
 ```
 
-Uma vez executando, para acessar a API, basta abrir o [http://localhost:5001/#/](http://localhost:5001/#/) no navegador.
+Uma vez executando, para acessar a API, basta abrir o [http://localhost:5002/#/](http://localhost:5001/#/) no navegador.
 
 
 

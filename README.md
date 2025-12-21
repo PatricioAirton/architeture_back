@@ -10,7 +10,7 @@ A api externa selecionada verifica e valida a situação de um CPF junto à Rece
 
 Com base nos cenários sugeridos na sprint de aquitetura de software e na necessidade de containerização da aplicação utilizando o docker como requisito para a implementação, a solução foi projetada de acordo com a imagem abaixo:
 
-!(architecture_back/aquitetura_mvp.png)
+!(aquitetura_mvp.png)
 
 
 O objetivo aqui é apresetar uma API emplementada seguindo o estilo REST.

@@ -1,6 +1,6 @@
  # Aplicação backend com chamada pra uma API Externa
 
-Este projeto faz parte do MVP que incrementa o trabalho apresentado na Sprint Desenvolvimento full stack que suporta uma aplicação web para o gerenciamento de passageiros de um voo de eVTOL.
+Este projeto faz parte do MVP que incrementa o trabalho apresentado na Sprint Desenvolvimento full stack que suporta uma aplicação web para o gerenciamento de passageiros de um voo de eVTOL (electric Vertical Takeoff and Landing vehicle), conhecido como carro voar o qual inicialmente terá capacidade para trasnsportar 4 passageiros e 1 piloto, mas que no futuro já no conceito de voo autônomo irá trasnportar 5 passageiros https://globoplay.globo.com/v/14196087.
 
 Para efeitos desse MVP, optou-se pelo cenário 1.1 com uma chamada de uma api externa a partir do backend.
 

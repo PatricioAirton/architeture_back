@@ -6,6 +6,11 @@ Para efeitos desse MVP, optou-se pelo cenário 1.1 com uma chamada de uma api ex
 
 A api externa selecionada verifica e valida a situação de um CPF junto à Receita Federal o que torna possível a correta identificação do passageiro e sua inclusão na lista de passageiros.
 
+# Arquitetura da solução
+
+Com base nos cenários sugeridos na sprint de aquitetura de software e na necessidade de containerização da aplicação utilizando o docker como requisito para a implementação, a solução foi projetada de acordo com a imagem abaixo:
+![Arquitetura](architecture_back/Arquitetura MVP PUC.png)
+
 
 O objetivo aqui é apresetar uma API emplementada seguindo o estilo REST.
 
